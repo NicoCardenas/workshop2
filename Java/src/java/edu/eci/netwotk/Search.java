@@ -1,7 +1,6 @@
 package edu.eci.netwotk;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,6 +10,8 @@ import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 
 public class Search {
+    
+    private static String url;
     
     public static void main(String[] args) {
         try {
@@ -39,9 +40,20 @@ public class Search {
     }
     
     private static URL read() throws MalformedURLException{
-        Scanner scan = new Scanner(System.in);
-        String url = scan.next();
-        //String webString = reque
+        if (url == null){
+            Scanner scan = new Scanner(System.in);
+            url = scan.next();
+        }
         return new URL(url);
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
+    
 }
