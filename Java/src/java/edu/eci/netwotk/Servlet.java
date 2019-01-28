@@ -19,7 +19,7 @@ public class Servlet extends HttpServlet {
             myClass.main(args);
         }
 
-        request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
+        //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
     }    
 
 }
