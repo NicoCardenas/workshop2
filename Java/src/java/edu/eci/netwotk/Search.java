@@ -3,6 +3,7 @@ package edu.eci.netwotk;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -13,11 +14,14 @@ public class Search {
     
     private static String url;
     
-    public static void main(String[] args) {
+    public void main(String[] args) {
         try {
             URL search = read();
             
-            File htmlTemplateFile = new File("web/template.html");
+            ClassLoader classLoader = getClass().getClassLoader();
+            //File htmlTemplateFile = new File(classLoader.getResource("web/template.html").getFile());
+            File htmlTemplateFile = new File("home/../web/template.html");
+            System.out.println("<<>>>>>>>>> " + htmlTemplateFile.getAbsolutePath());
             String htmlString = FileUtils.readFileToString(htmlTemplateFile);
 
             String body = "Protocol: " + search.getProtocol() + 

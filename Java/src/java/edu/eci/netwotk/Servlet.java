@@ -13,13 +13,13 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Search myClass = new Search();
 
-        if (request.getParameter("data") != null) {
-            myClass.setUrl(request.getParameter("data"));
-            String[] args = null;
+        if (request.getParameter("urlQuery") != null) {
+            myClass.setUrl(request.getParameter("urlQuery"));
+            String[] args = new String[0];
             myClass.main(args);
         }
 
-        //request.getRequestDispatcher("/WEB-INF/some-result.jsp").forward(request, response);
+        request.getRequestDispatcher("resultado.html").forward(request, response);
     }    
 
 }
