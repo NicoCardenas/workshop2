@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files
-#*.jar
+*.jar
 *.war
 *.nar
 *.ear
@@ -24,4 +24,4 @@ hs_err_pid*
 /Java/dist/
 /Java/nbproject/private/
 /Java/build/
-!/Java/lib/*.jar
+/Java/lib/!*.jar

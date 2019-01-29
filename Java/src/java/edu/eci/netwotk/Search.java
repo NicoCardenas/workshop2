@@ -18,10 +18,12 @@ public class Search {
         try {
             URL search = read();
             
-            ClassLoader classLoader = getClass().getClassLoader();
-            //File htmlTemplateFile = new File(classLoader.getResource("web/template.html").getFile());
-            File htmlTemplateFile = new File("home/../web/template.html");
-            System.out.println("<<>>>>>>>>> " + htmlTemplateFile.getAbsolutePath());
+            String path = "D:\\NickZennin\\Documents\\GitHub\\workshop2\\Java\\web\\template.html";
+            File htmlTemplateFile = readFile(path);
+            System.out.println(System.getProperty("user.dir"));
+            System.out.println("<<<<<<<<<<<" + htmlTemplateFile.getAbsolutePath() +" >>>>>>>>>>>>>>");
+            System.out.println("<<<<<<<<<<<" + htmlTemplateFile.getCanonicalPath() +" >>>>>>>>>>>>>>");
+            System.out.println("<<<<<<<<<<<" + htmlTemplateFile.getPath() +" >>>>>>>>>>>>>>");
             String htmlString = FileUtils.readFileToString(htmlTemplateFile);
 
             String body = "Protocol: " + search.getProtocol() + 
@@ -33,7 +35,7 @@ public class Search {
                           "<br> File: " + search.getFile() +
                           "<br> Ref: " + search.getRef();
             htmlString = htmlString.replace("$content", body);
-            File newHtmlFile = new File("web/resultado.html");
+            File newHtmlFile = new File("D:\\NickZennin\\Documents\\GitHub\\workshop2\\Java\\web\\resultado.html");
             FileUtils.writeStringToFile(newHtmlFile, htmlString);
 
         } catch (MalformedURLException e) {
@@ -43,7 +45,11 @@ public class Search {
         }
     }
     
-    private static URL read() throws MalformedURLException{
+    private File readFile(String path){
+        return new File(path);
+    }
+    
+    private URL read() throws MalformedURLException{
         if (url == null){
             Scanner scan = new Scanner(System.in);
             url = scan.next();
